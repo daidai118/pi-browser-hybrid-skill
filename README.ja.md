@@ -34,6 +34,12 @@ pi install /Users/daidai/ai/pi-browser-hybrid-skill
 pi install git:github.com/daidai118/pi-browser-hybrid-skill
 ```
 
+### リリースタグに固定してインストール
+
+```bash
+pi install git:github.com/daidai118/pi-browser-hybrid-skill@v0.1.1
+```
+
 ### 現在のプロジェクトだけにインストール
 
 ```bash
@@ -45,6 +51,12 @@ pi install -l git:github.com/daidai118/pi-browser-hybrid-skill
 ```bash
 pi update git:github.com/daidai118/pi-browser-hybrid-skill
 ```
+
+## プロジェクト文書
+
+- [Contributing guide](./CONTRIBUTING.md)
+- [Roadmap](./ROADMAP.md)
+- [Release checklist](./RELEASE_CHECKLIST.md)
 
 ## 要件
 

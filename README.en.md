@@ -34,6 +34,12 @@ pi install /Users/daidai/ai/pi-browser-hybrid-skill
 pi install git:github.com/daidai118/pi-browser-hybrid-skill
 ```
 
+### Pin to a release tag
+
+```bash
+pi install git:github.com/daidai118/pi-browser-hybrid-skill@v0.1.1
+```
+
 ### Install into project-local Pi settings
 
 ```bash
@@ -109,6 +115,12 @@ skills/browser-hybrid/scripts/browser-hybrid.mjs chrome list
 ```
 
 Use pass-through when you need backend-specific commands that are not normalized by hybrid.
+
+## Project docs
+
+- [Contributing guide](./CONTRIBUTING.md)
+- [Roadmap](./ROADMAP.md)
+- [Release checklist](./RELEASE_CHECKLIST.md)
 
 ## Notes
 

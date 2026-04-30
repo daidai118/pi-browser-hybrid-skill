@@ -34,6 +34,12 @@ pi install /Users/daidai/ai/pi-browser-hybrid-skill
 pi install git:github.com/daidai118/pi-browser-hybrid-skill
 ```
 
+### 固定到 release tag
+
+```bash
+pi install git:github.com/daidai118/pi-browser-hybrid-skill@v0.1.1
+```
+
 ### 安装到当前项目
 
 ```bash
@@ -45,6 +51,12 @@ pi install -l git:github.com/daidai118/pi-browser-hybrid-skill
 ```bash
 pi update git:github.com/daidai118/pi-browser-hybrid-skill
 ```
+
+## 项目文档
+
+- [Contributing guide](./CONTRIBUTING.md)
+- [Roadmap](./ROADMAP.md)
+- [Release checklist](./RELEASE_CHECKLIST.md)
 
 ## 运行要求
 

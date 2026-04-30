@@ -39,7 +39,7 @@ pi install git:github.com/daidai118/pi-browser-hybrid-skill
 ### Pin to a release tag
 
 ```bash
-pi install git:github.com/daidai118/pi-browser-hybrid-skill@v0.1.0
+pi install git:github.com/daidai118/pi-browser-hybrid-skill@v0.1.1
 ```
 
 ### Local path, before publishing
@@ -73,6 +73,12 @@ Status meanings:
 ```bash
 pi update git:github.com/daidai118/pi-browser-hybrid-skill
 ```
+
+## Project docs
+
+- [Contributing guide](./CONTRIBUTING.md)
+- [Roadmap](./ROADMAP.md)
+- [Release checklist](./RELEASE_CHECKLIST.md)
 
 ## CI
 

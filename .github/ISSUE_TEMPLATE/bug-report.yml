@@ -1,0 +1,46 @@
+name: Bug report
+description: Report a reproducible bug in pi-browser-hybrid-skill
+title: "[bug] "
+labels:
+  - bug
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: What broke?
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: URL
+      description: The page URL involved, if relevant
+      placeholder: https://example.com
+  - type: textarea
+    id: commands
+    attributes:
+      label: Commands run
+      description: Include the exact commands you executed
+      render: bash
+    validations:
+      required: true
+  - type: textarea
+    id: routing
+    attributes:
+      label: Routing details
+      description: What engine was chosen, and was that choice correct?
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
