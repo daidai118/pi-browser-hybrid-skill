@@ -1,0 +1,30 @@
+{
+  "name": "pi-browser-hybrid-skill",
+  "version": "0.1.0",
+  "description": "Obscura-first browser skill for Pi with automatic Chrome fallback when site compatibility looks risky",
+  "keywords": [
+    "pi-package",
+    "pi",
+    "pi-coding-agent",
+    "skills",
+    "obscura",
+    "chrome",
+    "hybrid",
+    "browser"
+  ],
+  "license": "MIT",
+  "files": [
+    "skills/",
+    "README.md",
+    "README.en.md",
+    "README.zh-CN.md",
+    "README.ja.md",
+    "LICENSE",
+    "THIRD_PARTY_NOTICES.md"
+  ],
+  "pi": {
+    "skills": [
+      "./skills"
+    ]
+  }
+}
