@@ -1,5 +1,9 @@
 # pi-browser-hybrid-skill
 
+[![CI](https://github.com/daidai118/pi-browser-hybrid-skill/actions/workflows/ci.yml/badge.svg)](https://github.com/daidai118/pi-browser-hybrid-skill/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/daidai118/pi-browser-hybrid-skill)](https://github.com/daidai118/pi-browser-hybrid-skill/releases)
+[![License](https://img.shields.io/github/license/daidai118/pi-browser-hybrid-skill)](./LICENSE)
+
 > Obscura-first browser automation for Pi with automatic Chrome fallback when the site looks risky.
 
 **Languages / 语言 / 言語**
@@ -26,16 +30,22 @@ Use this package when you want one browser entry point that makes the routing de
 
 ## Quick install
 
-### Before pushing to GitHub
-
-```bash
-pi install /Users/daidai/ai/pi-browser-hybrid-skill
-```
-
-### After pushing to GitHub
+### Latest from GitHub
 
 ```bash
 pi install git:github.com/daidai118/pi-browser-hybrid-skill
+```
+
+### Pin to a release tag
+
+```bash
+pi install git:github.com/daidai118/pi-browser-hybrid-skill@v0.1.0
+```
+
+### Local path, before publishing
+
+```bash
+pi install /Users/daidai/ai/pi-browser-hybrid-skill
 ```
 
 ### Install into the current project instead of global Pi settings
@@ -63,6 +73,10 @@ Status meanings:
 ```bash
 pi update git:github.com/daidai118/pi-browser-hybrid-skill
 ```
+
+## CI
+
+This repository ships a GitHub Actions workflow that checks script syntax and runs a smoke test against `https://example.com` through the hybrid probe.
 
 ## GitHub repository metadata
 

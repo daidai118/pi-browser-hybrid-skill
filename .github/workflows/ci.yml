@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Syntax check
+        run: |
+          node --check skills/browser-hybrid/scripts/browser-hybrid.mjs
+          node --check skills/browser-hybrid/vendor/obscura-cdp.mjs
+          node --check skills/browser-hybrid/vendor/chrome-cdp.mjs
+
+      - name: Hybrid probe smoke test
+        run: |
+          set -euo pipefail
+          node skills/browser-hybrid/scripts/browser-hybrid.mjs check https://example.com | tee /tmp/hybrid-check.txt
+          grep -q 'status: compatible' /tmp/hybrid-check.txt
+          grep -q 'recommended engine: obscura' /tmp/hybrid-check.txt
+
+      - name: Stop Obscura daemon
+        if: always()
+        run: node skills/browser-hybrid/scripts/browser-hybrid.mjs obscura stop || true
