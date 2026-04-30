@@ -14,6 +14,8 @@
 
 **Pi skill name:** `browser-hybrid`
 
+![Hybrid decision flow](./assets/hybrid-decision-flow.svg)
+
 ## Product positioning
 
 - `pi-obscura-skill`: lightweight, low-memory, default first choice
@@ -39,7 +41,7 @@ pi install git:github.com/daidai118/pi-browser-hybrid-skill
 ### Pin to a release tag
 
 ```bash
-pi install git:github.com/daidai118/pi-browser-hybrid-skill@v0.1.1
+pi install git:github.com/daidai118/pi-browser-hybrid-skill@v0.1.2
 ```
 
 ### Local path, before publishing
@@ -58,6 +60,7 @@ pi install -l git:github.com/daidai118/pi-browser-hybrid-skill
 
 ```bash
 skills/browser-hybrid/scripts/browser-hybrid.mjs check https://example.com
+skills/browser-hybrid/scripts/browser-hybrid.mjs why https://example.com
 skills/browser-hybrid/scripts/browser-hybrid.mjs engine https://example.com
 skills/browser-hybrid/scripts/browser-hybrid.mjs open https://example.com
 ```
@@ -76,6 +79,7 @@ pi update git:github.com/daidai118/pi-browser-hybrid-skill
 
 ## Project docs
 
+- [Changelog](./CHANGELOG.md)
 - [Contributing guide](./CONTRIBUTING.md)
 - [Roadmap](./ROADMAP.md)
 - [Release checklist](./RELEASE_CHECKLIST.md)

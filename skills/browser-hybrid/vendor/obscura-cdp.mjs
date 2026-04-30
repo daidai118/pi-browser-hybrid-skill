@@ -21,6 +21,7 @@ const TIMEOUT = 30000;
 const NAVIGATION_TIMEOUT = 30000;
 const START_TIMEOUT = 20000;
 const CHECK_SETTLE_MS = parseInteger(process.env.OBSCURA_CHECK_SETTLE_MS || '1500', 1500);
+const HEURISTIC_VERSION = '2026-04-30.2';
 const DEFAULT_VERSION = process.env.OBSCURA_VERSION || 'v0.1.1';
 const DEFAULT_PORT = parseInt(process.env.OBSCURA_PORT || '9223', 10);
 const IS_WINDOWS = process.platform === 'win32';
@@ -597,10 +598,23 @@ function assessCompatibility(snapshot, extraIssues = []) {
   if (errors.length > 0) status = 'incompatible';
   else if (warnings.length > 0 || score < 85) status = 'risky';
 
+  const riskLevel = status === 'compatible' ? 'low' : status === 'risky' ? 'medium' : 'high';
+  const recommendedEngine = status === 'compatible' ? 'obscura' : 'chrome';
   return {
+    heuristicVersion: HEURISTIC_VERSION,
     status,
+    riskLevel,
     score,
-    recommendedEngine: status === 'compatible' ? 'obscura' : 'chrome',
+    recommendedEngine,
+    issueCounts: {
+      total: issues.length,
+      errors: errors.length,
+      warnings: warnings.length,
+    },
+    decision: {
+      shouldFallbackToChrome: recommendedEngine === 'chrome',
+      primaryReason: issues[0]?.message || null,
+    },
     issues,
     reasons: issues.map((issue) => issue.message),
     snapshot,
@@ -716,13 +730,15 @@ async function compatibilitySnapshot(cdp, sessionId) {
 }
 
 function formatCompatibilityReport(report) {
-  const { snapshot, status, score, recommendedEngine, issues } = report;
+  const { snapshot, status, score, recommendedEngine, issues, riskLevel, heuristicVersion } = report;
   const doc = snapshot.documentMetrics;
   const lines = [
     `Compatibility check: ${snapshot.href}`,
     `status: ${status}`,
     `recommended engine: ${recommendedEngine}`,
     `score: ${score}/100`,
+    `risk level: ${riskLevel}`,
+    `heuristics: ${heuristicVersion}`,
     `title: ${snapshot.title || '(empty)'}`,
     `readyState: ${snapshot.readyState}`,
     `stylesheets: ${snapshot.stylesheetCount} applied / ${snapshot.linkStylesheetCount} linked`,

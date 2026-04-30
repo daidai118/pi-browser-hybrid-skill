@@ -33,6 +33,13 @@ jobs:
           grep -q 'status: compatible' /tmp/hybrid-check.txt
           grep -q 'recommended engine: obscura' /tmp/hybrid-check.txt
 
+      - name: Hybrid why smoke test
+        run: |
+          set -euo pipefail
+          node skills/browser-hybrid/scripts/browser-hybrid.mjs why https://example.com | tee /tmp/hybrid-why.txt
+          grep -q 'chosen engine: obscura' /tmp/hybrid-why.txt
+          grep -q 'status: compatible' /tmp/hybrid-why.txt
+
       - name: Stop Obscura daemon
         if: always()
         run: node skills/browser-hybrid/scripts/browser-hybrid.mjs obscura stop || true

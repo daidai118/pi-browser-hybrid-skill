@@ -24,6 +24,7 @@ skills/browser-hybrid/scripts/browser-hybrid.mjs
 
 ```bash
 skills/browser-hybrid/scripts/browser-hybrid.mjs check https://example.com
+skills/browser-hybrid/scripts/browser-hybrid.mjs why https://example.com
 skills/browser-hybrid/scripts/browser-hybrid.mjs engine https://example.com
 ```
 
@@ -31,6 +32,8 @@ The probe uses Obscura's compatibility checker and returns one of:
 - `compatible` → stay on Obscura
 - `risky` → Chrome fallback is safer
 - `incompatible` → use Chrome
+
+Use `why` when you want the routing explanation instead of only the chosen engine.
 
 ## Open with automatic backend selection
 

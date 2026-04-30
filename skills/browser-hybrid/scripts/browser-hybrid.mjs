@@ -94,6 +94,33 @@ function formatHybridCheck(report) {
   return lines.join('\n');
 }
 
+function formatHybridWhy(url, report) {
+  const lines = [
+    `Hybrid reasoning for: ${url}`,
+    `chosen engine: ${report.recommendedEngine}`,
+    `status: ${report.status}`,
+    `risk level: ${report.riskLevel || 'unknown'}`,
+    `score: ${report.score}/100`,
+  ];
+
+  if (report.decision?.primaryReason) {
+    lines.push(`primary reason: ${report.decision.primaryReason}`);
+  }
+
+  if (report.issueCounts) {
+    lines.push(`issues: ${report.issueCounts.total} total (${report.issueCounts.errors} errors, ${report.issueCounts.warnings} warnings)`);
+  }
+
+  if (report.reasons?.length) {
+    lines.push('detailed reasons:');
+    for (const reason of report.reasons) lines.push(`- ${reason}`);
+  } else {
+    lines.push('detailed reasons: none');
+  }
+
+  return lines.join('\n');
+}
+
 function runHybridProbe(url) {
   const result = runBackend('obscura', ['check', '--json', url]);
   return parseJson(result.stdout || result.output);
@@ -129,6 +156,7 @@ Usage: browser-hybrid <command> [args]
 
 Hybrid commands
   check [--json] <url>          Probe the site with Obscura heuristics
+  why   [--json] <url>          Explain why hybrid would choose obscura or chrome
   engine <url>                  Print only the recommended engine (obscura|chrome)
   open <url>                    Probe first, then open with obscura or chrome
   list                          List both obscura and chrome targets with prefixed ids
@@ -188,6 +216,15 @@ function main() {
     if (!url) throw new Error('Usage: check [--json] <url>');
     const report = runHybridProbe(url);
     print(jsonMode ? JSON.stringify(report, null, 2) : formatHybridCheck(report));
+    return;
+  }
+
+  if (command === 'why') {
+    const jsonMode = args[0] === '--json';
+    const url = jsonMode ? args[1] : args[0];
+    if (!url) throw new Error('Usage: why [--json] <url>');
+    const report = runHybridProbe(url);
+    print(jsonMode ? JSON.stringify({ url, ...report }, null, 2) : formatHybridWhy(url, report));
     return;
   }
 

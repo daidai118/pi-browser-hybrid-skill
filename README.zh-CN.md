@@ -37,7 +37,7 @@ pi install git:github.com/daidai118/pi-browser-hybrid-skill
 ### 固定到 release tag
 
 ```bash
-pi install git:github.com/daidai118/pi-browser-hybrid-skill@v0.1.1
+pi install git:github.com/daidai118/pi-browser-hybrid-skill@v0.1.2
 ```
 
 ### 安装到当前项目
@@ -54,6 +54,7 @@ pi update git:github.com/daidai118/pi-browser-hybrid-skill
 
 ## 项目文档
 
+- [Changelog](./CHANGELOG.md)
 - [Contributing guide](./CONTRIBUTING.md)
 - [Roadmap](./ROADMAP.md)
 - [Release checklist](./RELEASE_CHECKLIST.md)
@@ -77,6 +78,7 @@ skills/browser-hybrid/scripts/browser-hybrid.mjs
 ```bash
 skills/browser-hybrid/scripts/browser-hybrid.mjs check https://example.com
 skills/browser-hybrid/scripts/browser-hybrid.mjs check --json https://example.com
+skills/browser-hybrid/scripts/browser-hybrid.mjs why https://example.com
 skills/browser-hybrid/scripts/browser-hybrid.mjs engine https://example.com
 ```
 
